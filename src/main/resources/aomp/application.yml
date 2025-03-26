@@ -1,0 +1,44 @@
+server:
+  port: 43931
+
+spring:
+  mvc:
+    async:
+      request-timeout: 5000
+  datasource:
+    url: jdbc:mysql://[@4394-TDSQL_VIP]:[@4394-TDSQL_PORT]/wsdawconfig?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+    username: [*user_WSDAWCONFIG]
+    password: [*pass_WSDAWCONFIG]
+    driverClassName: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    defaultAutoCommit: false
+    druid:
+      initialSize: 25
+      maxActive: 128
+      minIdle: 25
+      testOnBorrow: true
+      testOnReturn: false
+      testWhileIdle: true
+      validationQuery: SELECT 1
+      timeBetweenEvictionRunsMillis: 34000
+      minEvictableIdleTimeMillis: 34000
+      removeAbandoned: false
+      logAbandoned: true
+      removeAbandonedTimeout: 54
+      maxWait: 10000
+      poolPreparedStatements: false
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+
+mybatis:
+  typeAliasesPackage: com.webank.wsdaw.safebox.dao.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+servlet:
+  context-path: /api
+
+logging:
+  config: config/logback-spring.xml
+
+system:
+  encrypt-private-key: [*key_wsdawEncryptPrivateKey]
